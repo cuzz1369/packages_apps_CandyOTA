@@ -108,12 +108,6 @@ public class AboutActivity extends Activity {
 		String appVer = getResources().getString(R.string.about_app_version);
 		String appVerActual = getResources().getString(R.string.app_version);
 		versionSummary.setText(appVer + " v" + appVerActual);
-		
-		if (Preferences.getAdsEnabled(this)) {
-			mAdView = (AdView) findViewById(R.id.adView);
-			AdRequest adRequest = new AdRequest.Builder().build();
-			mAdView.loadAd(adRequest);
-		}
 	}
 
 	private void setupDonateDialog() {
