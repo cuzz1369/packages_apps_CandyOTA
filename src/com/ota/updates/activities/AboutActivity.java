@@ -158,4 +158,94 @@ public class AboutActivity extends Activity {
 			mAdView.pause();
 		}
 	}
+	
+	public class Changelog extends AsyncTask<Void, Void, String> {
+		
+		private ProgressDialog mLoadingDialog;
+		private static final String CHANGELOG = "Changelog.md";
+		private static final String TAG = "AboutActivity.Changelog";
+		private File mChangelogFile;
+		
+		@Override
+		protected void onPreExecute(){
+
+			// Show a loading/progress dialog while the search is being performed
+			mLoadingDialog = new ProgressDialog(mContext);
+			mLoadingDialog.setIndeterminate(true);
+			mLoadingDialog.setCancelable(false);
+			mLoadingDialog.setMessage(mContext.getResources().getString(R.string.loading));
+			mLoadingDialog.show();
+
+			// Delete any existing manifest file before we attempt to download a new one
+			mChangelogFile = new File(mContext.getFilesDir().getPath(), CHANGELOG);
+			if(mChangelogFile.exists()) {
+				mChangelogFile.delete();
+			}
+		}
+
+		@Override
+		protected String doInBackground(Void... params) {
+			try {
+				InputStream input = null;
+					//Add Candy Changelog When This Is All Over And Done With K Jalen ?
+
+				String urlStr = "https://raw.githubusercontent.com/Kryten2k35/OTAUpdates/stable/Changelog.md";
+				URL url = new URL(urlStr);
+				URLConnection connection = url.openConnection();
+				connection.connect();
+				// download the file
+				input = new BufferedInputStream(url.openStream());
+
+				OutputStream output = mContext.openFileOutput(
+						CHANGELOG, Context.MODE_PRIVATE);
+
+				byte data[] = new byte[1024];
+				int count;
+				while ((count = input.read(data)) != -1) {
+					output.write(data, 0, count);
+				}
+
+				output.flush();
+				output.close();
+				input.close();
+
+				// file finished downloading, parse it!
+
+			} catch (Exception e) {
+				Log.d(TAG, "Exception: " + e.getMessage());
+			}
+			
+			InputStreamReader inputReader = null;
+	        String text = null;
+
+	        try {
+	            StringBuilder data = new StringBuilder();
+	            char tmp[] = new char[2048];
+	            int numRead;
+	            inputReader = new FileReader(mChangelogFile);
+	            while ((numRead = inputReader.read(tmp)) >= 0) {
+	                data.append(tmp, 0, numRead);
+	            }
+	            text = data.toString();
+	        } catch (IOException e) {
+	            text = getString(R.string.changelog_error);
+	        } finally {
+	            try {
+	                if (inputReader != null) {
+	                    inputReader.close();
+	                }
+	            } catch (IOException e) {
+	            }
+	        }
+			return text;
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			mLoadingDialog.cancel();
+			showChangelogDialog(result);
+			super.onPostExecute(result);
+		}
+		
+	}
 }
