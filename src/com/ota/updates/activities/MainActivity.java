@@ -170,16 +170,6 @@ public class MainActivity extends Activity implements Constants{
 		updateRomInformation();
 		updateRomUpdateLayouts();
 		updateWebsiteLayout();
-		
-		if (Preferences.getAdsEnabled(mContext)) {
-			try {
-				mAdView = (AdView) findViewById(R.id.adView);
-				mAdRequest = new AdRequest.Builder().build();
-				mAdView.loadAd(mAdRequest);
-			} catch(NullPointerException e) {
-				Log.e(TAG, e.getMessage());
-			}
-		}
 	}
 
 	@Override
