@@ -214,6 +214,7 @@ public class AboutActivity extends Activity {
 		protected String doInBackground(Void... params) {
 			try {
 				InputStream input = null;
+					//Add Candy Changelog When This Is All Over And Done With K Jalen ?
 
 				String urlStr = "https://raw.githubusercontent.com/Kryten2k35/OTAUpdates/stable/Changelog.md";
 				URL url = new URL(urlStr);
