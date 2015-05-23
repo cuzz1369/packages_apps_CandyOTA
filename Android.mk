@@ -35,7 +35,7 @@ LOCAL_AAPT_FLAGS := \
 	--extra-packages com.google.android.gms \
 	--extra-packages android.support.v7.cardview
 
-LOCAL_PACKAGE_NAME := OTAUpdates
+LOCAL_PACKAGE_NAME := CandyOTA
 
 LOCAL_MODULE_TAGS := optional
 
@@ -62,4 +62,6 @@ libs/RootTools.jar \
 
 include $(BUILD_MULTI_PREBUILT)
 
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
