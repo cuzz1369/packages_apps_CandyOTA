@@ -1,46 +1,92 @@
-# OTAUpdates
+# CandyOTA
+
+# Requirements For CandyOTA to work Properly...
 
 
-A useful tool to help ROM developers provide OTA updates to their users. It's free to use, you can build from source or use the APK provided.
+1. Device Must Have Offical Support By The CandRom's Team
+2. Dircet Linking 
+3. A Brain
 
-# Requirements
+# OTA XML 
+Edit These Files To Match Your Own device 
+``` XML
+<?xml version="1.0" encoding="UTF-8"?>
+<ROM>
+	<!--ROM Name-->
+		<RomName>Candy5</RomName>
 
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<VersionName>candy5-Release.v1.5.0-20150310-OFFICIAL-d2att</VersionName>
 
-1. Root - Not essential, but you will most likely have this anyway
-2. A place to store a static manifest XML
-3. A place to host your ROM
-4. Some build.prop entries
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<VersionNumber type="integer">20150519</VersionNumber>
 
-# How-to
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<DirectUrl>DIRECT LINKS HERE</DirectUrl>
 
-There are two ways you can use this in your ROM. Manually, or automatically with [romhut.com](https://www.romhut.com). Romhut is highly recommended, as it will host your files for you, automate the process somewhat and it's free for users and developers.
-- [Using with romhut.com](Romhut.md)
-- [Using manually](Manually.md)
+	<!--Dont Touch This K!-->
+		<HttpUrl nil="true" />
 
-# Installing
+	<!--CandyRoms Version-->
+		<Android>1.0.1</Android>
 
-Be aware, this application is meant for ROM developers. If you are a user wishing to use this application, get in touch with your developer and point them towards this page!
+	<!--NEED EDIT EVERY NEW UPDATE-->
+	<!-- You can disable MD5 checking like this: <CheckMD5 nil="true" />-->
+		<CheckMD5>MD5 HERE</CheckMD5>
 
-For ROM developers, [see here for installing instructions](Installing.md)
+	<!--THIS NEEDS TO BE EDITED EVERY NEW UPDATE-->
+	<!--Please enter this in BYTES only.Otherwise an incorrect value will be shown-->
+	<!--use google to get the byte vale ex 214.17 mb to bytes-->
+		<FileSize type="integer">214170000</FileSize>
 
-# Usage
+	<!--Maintainer Name Name-->
+		<Developer>Flashalot</Developer>
 
-Anyone is free to use this project in their ROM. I only request that you keep the about page in-tact leaving my credits in there. You don't have to, but it'd be nice if you did.
+	<!--One And Only Candy Website-->
+		<WebsiteURL>http://the-candy-shop.co/</WebsiteURL>
 
-I'd also appreciate a tag in your post, wherever you publish :)
+	<!-- Team Donate Link fyi its one big troll og candy users will rember it -->
+		<DonateURL>https://goo.gl/g9w6ui</DonateURL>
 
-# Building
-## Eclipse
+	<!--Changelog here... Use DaringFireball's Markdown to format it-->
+	<!--Surround special characters with the CDATA tags or your XML will NOT parse-->
+		<Changelog>
+		### Changelog 20150105
+		* Stuff
+		* Updated this, or that
+		* Fixed all the things
+		* We even fixed this
+		* Don't forget all the awesome features you added
+		</Changelog>
 
-To build from source via Eclipse, you need to checkout the [instructions on building](Building.md)
+	<!--Default Candy Addons Page Dont Like it change it  ! -->
+		<AddonCount>2</AddonCount>
+		<AddonsURL>https://basketbuild.com/uploads/devs/Flashalot/addons.xml</AddonsURL>
 
-## AOSP
+</ROM>
+```
+Once Your Done With That save it as ota.xml and upload it to your host
+and add it to your ro.ota.manifest="link here to your ota.xml" 
 
-To build from source in your AOSP build, you need to checkout the [instructions on building with AOSP](AOSP_CM.md). There are some advantages of this method, being that this method does not need SU permissions throughout the app.
+##Updates
 
-# Contributions
+Now That You Have That Done Whenever you want to push update make sure to do this on ever update 
 
-If you feel like you can contribute to this project, don't hesitate to fork and send me some pull requests.
+- look at your build.prop so that your version is incrementally higher than before
+
+```
+  # Before
+  ro.candyroms.version=20150105
+  
+  # After
+  ro.candyroms.version=20150108 
+```
+- Replace/overwrite your ota.xml with the candyversion number you saw in the zip
+
+- Publish your ROM on your favourite website
+
+Now all your users will get an OTA update notification at some point, whenever their device checks for one!
+
 
 # Licencing
 
