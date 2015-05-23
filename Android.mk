@@ -35,7 +35,7 @@ LOCAL_AAPT_FLAGS := \
 	--extra-packages com.google.android.gms \
 	--extra-packages android.support.v7.cardview
 
-LOCAL_PACKAGE_NAME := OTAUpdates
+LOCAL_PACKAGE_NAME := CandyOTA
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
 	RootTools \
