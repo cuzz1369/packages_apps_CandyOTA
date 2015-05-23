@@ -94,11 +94,8 @@ public class AboutActivity extends Activity {
 		String closeHTML = "</font>";
 		String newLine = "<br />";
 		String creditsText =
-				openHTML + "Matt Booth" + closeHTML + " - Anything not mentioned below" + newLine +
-				openHTML + "Roman Nurik" + closeHTML + " - Android Asset Studio Framework" + newLine +
-				openHTML + "Jeff Gilfelt"+ closeHTML + " - Android Action Bar Style Generator" + newLine + 
-				openHTML + "Ficeto (AllianceROM)" + closeHTML + " - Shell tools" + newLine +
-				openHTML + "StackOverflow" + closeHTML + " - Many, many people";
+				openHTML + "Matt Booth" + closeHTML + " - For His excellent OTA App And Allowing It To Be Opensourced" + newLine +
+				openHTML + "Jalen Battle-Bryant (Flashalot)" + closeHTML + " - Ported To Candy Roms ";
 		creditsSummary.setText(Html.fromHtml(creditsText));
 		
 		TextView versionTitle = (TextView) findViewById(R.id.about_tv_version_title);
@@ -209,8 +206,9 @@ public class AboutActivity extends Activity {
 			try {
 				InputStream input = null;
 					//Add Candy Changelog When This Is All Over And Done With K Jalen ?
+					//Sorta Got It Done For Now K?
 
-				String urlStr = "https://raw.githubusercontent.com/Kryten2k35/OTAUpdates/stable/Changelog.md";
+				String urlStr = "https://raw.githubusercontent.com/flashalot/CandyOTA-Files/c5/Changelog.md";
 				URL url = new URL(urlStr);
 				URLConnection connection = url.openConnection();
 				connection.connect();
