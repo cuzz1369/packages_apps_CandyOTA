@@ -1,18 +1,18 @@
 # CandyOTA
 
-# Requirements For CandyOTA to work Properly...
+# Requirements for CandyOTA to work properly...
 
 
-1. Device Must Have Offical Support By The CandRom's Team
-2. Dircet Linking 
-3. A Brain
+1. Device must have offical support by CandRom's
+2. Dircet linking 
+3. A brain
 
 # OTA XML 
-Edit These Files To Match Your Own device 
+Edit these files to match your own device 
 ``` XML
 <?xml version="1.0" encoding="UTF-8"?>
 <ROM>
-	<!--ROM Name-->
+	<!--ROM name-->
 		<RomName>Candy5</RomName>
 
 	<!--NEED EDIT EVERY NEW UPDATE-->
@@ -36,16 +36,16 @@ Edit These Files To Match Your Own device
 
 	<!--THIS NEEDS TO BE EDITED EVERY NEW UPDATE-->
 	<!--Please enter this in BYTES only.Otherwise an incorrect value will be shown-->
-	<!--use google to get the byte vale ex 214.17 mb to bytes-->
+	<!--Use google to get the byte vale ex 214.17 mb to bytes-->
 		<FileSize type="integer">214170000</FileSize>
 
-	<!--Maintainer Name Name-->
+	<!--Maintainer handle-->
 		<Developer>Flashalot</Developer>
 
-	<!--One And Only Candy Website-->
+	<!--The one and only Candy website-->
 		<WebsiteURL>http://the-candy-shop.co/</WebsiteURL>
 
-	<!-- Team Donate Link fyi its one big troll og candy users will rember it -->
+	<!-- Team donate link (fyi its one big troll og candy users will rember it) -->
 		<DonateURL>https://goo.gl/g9w6ui</DonateURL>
 
 	<!--Changelog here... Use DaringFireball's Markdown to format it-->
@@ -59,18 +59,18 @@ Edit These Files To Match Your Own device
 		* Don't forget all the awesome features you added
 		</Changelog>
 
-	<!--Default Candy Addons Page Dont Like it change it  ! -->
+	<!--Default Candy addons page. Don't like it change it! -->
 		<AddonCount>2</AddonCount>
 		<AddonsURL>https://basketbuild.com/uploads/devs/Flashalot/addons.xml</AddonsURL>
 
 </ROM>
 ```
-Once Your Done With That save it as ota.xml and upload it to your host
+Once you're done with that save it as ota.xml and upload it to your host
 and add it to your ro.ota.manifest="link here to your ota.xml" 
 
 ##Updates
 
-Now That You Have That Done Whenever you want to push update make sure to do this on ever update 
+Now that you have that done whenever you want to push update make sure to do this on ever update 
 
 - look at your build.prop so that your version is incrementally higher than before
 
@@ -88,7 +88,7 @@ Now That You Have That Done Whenever you want to push update make sure to do thi
 Now all your users will get an OTA update notification at some point, whenever their device checks for one!
 
 
-# Licencing
+# Licensing
 
 This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). A copy of the licence can be obtained [here](http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 
