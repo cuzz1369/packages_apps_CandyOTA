@@ -1,48 +1,94 @@
-# OTAUpdates
+# CandyOTA
+
+# Requirements for CandyOTA to work properly...
 
 
-A useful tool to help ROM developers provide OTA updates to their users. It's free to use, you can build from source or use the APK provided.
+1. Device must have offical support by CandRom's
+2. Dircet linking 
+3. A brain
 
-# Requirements
+# OTA XML 
+Edit these files to match your own device 
+``` XML
+<?xml version="1.0" encoding="UTF-8"?>
+<ROM>
+	<!--ROM name-->
+		<RomName>Candy5</RomName>
+
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<VersionName>candy5-Release.v1.5.0-20150310-OFFICIAL-d2att</VersionName>
+
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<VersionNumber type="integer">20150519</VersionNumber>
+
+	<!--NEED EDIT EVERY NEW UPDATE-->
+		<DirectUrl>DIRECT LINKS HERE</DirectUrl>
+
+	<!--Dont Touch This K!-->
+		<HttpUrl nil="true" />
+
+	<!--CandyRoms Version-->
+		<Android>1.0.1</Android>
+
+	<!--NEED EDIT EVERY NEW UPDATE-->
+	<!-- You can disable MD5 checking like this: <CheckMD5 nil="true" />-->
+		<CheckMD5>MD5 HERE</CheckMD5>
+
+	<!--THIS NEEDS TO BE EDITED EVERY NEW UPDATE-->
+	<!--Please enter this in BYTES only.Otherwise an incorrect value will be shown-->
+	<!--Use google to get the byte vale ex 214.17 mb to bytes-->
+		<FileSize type="integer">214170000</FileSize>
+
+	<!--Maintainer handle-->
+		<Developer>Flashalot</Developer>
+
+	<!--The one and only Candy website-->
+		<WebsiteURL>http://the-candy-shop.co/</WebsiteURL>
+
+	<!-- Team donate link (fyi its one big troll og candy users will rember it) -->
+		<DonateURL>https://goo.gl/g9w6ui</DonateURL>
+
+	<!--Changelog here... Use DaringFireball's Markdown to format it-->
+	<!--Surround special characters with the CDATA tags or your XML will NOT parse-->
+		<Changelog>
+		### Changelog 20150105
+		* Stuff
+		* Updated this, or that
+		* Fixed all the things
+		* We even fixed this
+		* Don't forget all the awesome features you added
+		</Changelog>
+
+	<!--Default Candy addons page. Don't like it change it! -->
+		<AddonCount>2</AddonCount>
+		<AddonsURL>https://basketbuild.com/uploads/devs/Flashalot/addons.xml</AddonsURL>
+
+</ROM>
+```
+Once you're done with that save it as ota.xml and upload it to your host
+and add it to your ro.ota.manifest="link here to your ota.xml" 
+
+##Updates
+
+Now that you have that done whenever you want to push update make sure to do this on ever update 
+
+- look at your build.prop so that your version is incrementally higher than before
+
+```
+  # Before
+  ro.candyroms.version=20150105
+  
+  # After
+  ro.candyroms.version=20150108 
+```
+- Replace/overwrite your ota.xml with the candyversion number you saw in the zip
+
+- Publish your ROM on your favourite website
+
+Now all your users will get an OTA update notification at some point, whenever their device checks for one!
 
 
-1. Root - Not essential, but you will most likely have this anyway
-2. A place to store a static manifest XML
-3. A place to host your ROM
-4. Some build.prop entries
-
-# How-to
-
-There are two ways you can use this in your ROM. Manually, or automatically with [romhut.com](https://www.romhut.com). Romhut is highly recommended, as it will host your files for you, automate the process somewhat and it's free for users and developers.
-- [Using with romhut.com](Romhut.md)
-- [Using manually](Manually.md)
-
-# Installing
-
-Be aware, this application is meant for ROM developers. If you are a user wishing to use this application, get in touch with your developer and point them towards this page!
-
-For ROM developers, [see here for installing instructions](Installing.md)
-
-# Usage
-
-Anyone is free to use this project in their ROM. I only request that you keep the about page in-tact leaving my credits in there. You don't have to, but it'd be nice if you did.
-
-I'd also appreciate a tag in your post, wherever you publish :)
-
-# Building
-## Eclipse
-
-To build from source via Eclipse, you need to checkout the [instructions on building](Building.md)
-
-## AOSP
-
-To build from source in your AOSP build, you need to checkout the [instructions on building with AOSP](AOSP_CM.md). There are some advantages of this method, being that this method does not need SU permissions throughout the app.
-
-# Contributions
-
-If you feel like you can contribute to this project, don't hesitate to fork and send me some pull requests.
-
-# Licencing
+# Licensing
 
 This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). A copy of the licence can be obtained [here](http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 

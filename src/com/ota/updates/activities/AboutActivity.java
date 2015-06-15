@@ -81,11 +81,8 @@ public class AboutActivity extends Activity {
 		String closeHTML = "</font>";
 		String newLine = "<br />";
 		String creditsText =
-				openHTML + "Matt Booth" + closeHTML + " - Anything not mentioned below" + newLine +
-				openHTML + "Roman Nurik" + closeHTML + " - Android Asset Studio Framework" + newLine +
-				openHTML + "Jeff Gilfelt"+ closeHTML + " - Android Action Bar Style Generator" + newLine + 
-				openHTML + "Ficeto (AllianceROM)" + closeHTML + " - Shell tools" + newLine +
-				openHTML + "StackOverflow" + closeHTML + " - Many, many people";
+				openHTML + "Matt Booth" + closeHTML + " - For His excellent OTA App And Allowing It To Be Opensourced" + newLine +
+				openHTML + "Jalen Battle-Bryant (Flashalot)" + closeHTML + " - Ported To Candy Roms ";
 		creditsSummary.setText(Html.fromHtml(creditsText));
 		
 		TextView versionTitle = (TextView) findViewById(R.id.about_tv_version_title);
@@ -96,11 +93,6 @@ public class AboutActivity extends Activity {
 		String appVerActual = getResources().getString(R.string.app_version);
 		versionSummary.setText(appVer + " v" + appVerActual);
 		
-		if (Preferences.getAdsEnabled(this)) {
-			mAdView = (AdView) findViewById(R.id.adView);
-			AdRequest adRequest = new AdRequest.Builder().build();
-			mAdView.loadAd(adRequest);
-		}
 	}
 
 	private void setupDonateDialog() {

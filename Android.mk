@@ -35,7 +35,9 @@ LOCAL_AAPT_FLAGS := \
 	--extra-packages com.google.android.gms \
 	--extra-packages android.support.v7.cardview
 
-LOCAL_PACKAGE_NAME := OTAUpdates
+LOCAL_PACKAGE_NAME := CandyOTA
+
+LOCAL_MODULE_TAGS := optional
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
 	RootTools \
@@ -43,7 +45,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 	android-support-v7-cardview \
 	play 
 
-$(shell cp $(LOCAL_PATH)/libs/$(TARGET_ARCH_ABI)/libbypass.so $(TARGET_OUT)/lib/libbypass.so)
+LOCAL_JNI_SHARED_LIBRARIES := libbypass
 
 LOCAL_CERTIFICATE := platform
 
@@ -59,3 +61,7 @@ LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
 libs/RootTools.jar \
 
 include $(BUILD_MULTI_PREBUILT)
+
+
+include $(call all-makefiles-under,$(LOCAL_PATH))
+

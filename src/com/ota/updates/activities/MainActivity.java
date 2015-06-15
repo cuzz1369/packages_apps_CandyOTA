@@ -170,16 +170,6 @@ public class MainActivity extends Activity implements Constants{
 		updateRomInformation();
 		updateRomUpdateLayouts();
 		updateWebsiteLayout();
-		
-		if (Preferences.getAdsEnabled(mContext)) {
-			try {
-				mAdView = (AdView) findViewById(R.id.adView);
-				mAdRequest = new AdRequest.Builder().build();
-				mAdView.loadAd(mAdRequest);
-			} catch(NullPointerException e) {
-				Log.e(TAG, e.getMessage());
-			}
-		}
 	}
 
 	@Override
@@ -449,13 +439,13 @@ public class MainActivity extends Activity implements Constants{
 		//ROM name
 		TextView romName = (TextView) findViewById(R.id.tv_main_rom_name);
 		String romNameTitle = getApplicationContext().getResources().getString(R.string.main_rom_name) + " ";
-		String romNameActual = Utils.getProp("ro.ota.romname");
+		String romNameActual = Utils.getProp("ro.ota.candyroms");
 		romName.setText(Html.fromHtml(romNameTitle + htmlColorOpen + romNameActual + htmlColorClose));
 
 		//ROM version
 		TextView romVersion = (TextView) findViewById(R.id.tv_main_rom_version);
 		String romVersionTitle = getApplicationContext().getResources().getString(R.string.main_rom_version) + " ";
-		String romVersionActual = Utils.getProp("ro.ota.version");
+		String romVersionActual = Utils.getProp("ro.candyroms.version");
 		romVersion.setText(Html.fromHtml(romVersionTitle + htmlColorOpen + romVersionActual + htmlColorClose));
 
 		//ROM date
