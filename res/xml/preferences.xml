@@ -110,6 +110,7 @@
         android:title="@string/app_name" />
     
     <Preference 
+        android:selectable="false"
         android:key="about_activity_pref"
         android:title="@string/about_about_title"
         android:summary="@string/about_preferences_summary" />
