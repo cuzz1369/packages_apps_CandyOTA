@@ -22,7 +22,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.os.Build;
-
 import com.ota.updates.R;
 
 public class Preferences implements Constants{
@@ -107,12 +106,92 @@ public class Preferences implements Constants{
 	}
 	
 	public static int getCurrentTheme(Context context) {
+
 		if (Utils.isLollipop()) {
+		Boolean isDefaultThemeUsed = Utils.doesPropExist(OTA_DEFAULT_THEME);
+		String getDefTheme = Utils.getProp(OTA_DEFAULT_THEME);
+		Boolean isLollipop = Utils.isLollipop();
+
+		// Has a a default theme been set by the developer?
+		if(isDefaultThemeUsed && !getDefTheme.isEmpty()) {
+			int defThemeInt = Integer.parseInt(getDefTheme);
+			if(!(defThemeInt < 0 || defThemeInt > 2)) {
+				return Integer.parseInt(getPrefs(context).getString(CURRENT_THEME, getDefTheme));
+			} else {
+				return normalTheme(context, isLollipop);
+			}
+		} else {
+			return normalTheme(context, isLollipop);
+		}
+	}
+
+	private static int normalTheme(Context context, Boolean isLollipop) {
+		if (isLollipop) {
 			return Integer.parseInt(getPrefs(context).getString(CURRENT_THEME, THEME_LIGHT));
 		} else {
 			return Integer.parseInt(getPrefs(context).getString(CURRENT_THEME, THEME_DARK));
 		}
 	}
+
+	public static int getTheme(Context context) {
+		boolean isLollipop = Utils.isLollipop();
+		switch(getCurrentTheme(context))
+		{
+		case 0:
+			return R.style.Theme_RagnarLight;
+		case 1:
+			// Lollipop doesn't have a DarkActionBar theme
+			if (isLollipop) {
+				return R.style.Theme_RagnarLight;
+			} else {
+				return R.style.Theme_RagnarLight_DarkActionBar;
+			}
+		case 2:
+			return R.style.Theme_RagnarDark;
+		default:
+			if (isLollipop) {
+				return R.style.Theme_RagnarLight;
+			} else {
+				return R.style.Theme_RagnarDark;
+			}
+		}
+	}
+
+	public static int getSettingsTheme(Context context)
+    {       
+        switch(getCurrentTheme(context))
+        {
+        case 0:
+            return R.style.Theme_RagnarLight_Settings;
+        case 1:
+            return R.style.Theme_RagnarLight_DarkActionBar_Settings;
+        case 2:
+            return R.style.Theme_RagnarDark_Settings;
+        default:
+        	if (Utils.isLollipop()) {
+        		return R.style.Theme_RagnarLight_Settings;
+        	} else {
+        		return R.style.Theme_RagnarDark_Settings;
+        	}
+        }
+    }
+
+	public static String getIgnoredRelease(Context context) {
+		return getPrefs(context).getString(IGNORE_RELEASE_VERSION, "0");
+	}
+
+	public static Boolean getAdsEnabled(Context context) {
+		return getPrefs(context).getBoolean(ADS_ENABLED, true);
+	}
+
+	public static String getOldChangelog(Context context) {
+		return getPrefs(context).getString(OLD_CHANGELOG, context.getResources().getString(R.string.app_version));
+	}
+
+	public static Boolean getFirstRun(Context context) {
+		return getPrefs(context).getBoolean(FIRST_RUN, true);
+	}
+>>>>>>> fc3c1c8... Fix for if theme isn't used in the build.prop
 	
 	public static int getTheme(Context context)
     {       
