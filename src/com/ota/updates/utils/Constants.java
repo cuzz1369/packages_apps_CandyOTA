@@ -51,10 +51,10 @@ public interface Constants {
 	public static final String DOWNLOAD_RUNNING		 			= "download_running";
 	public static final String NETWORK_TYPE 					= "network_type";
 	public static final String DOWNLOAD_ID 						= "download_id";
-	public static final String UPDATER_BACK_SERVICE 		 		= "background_service";
+	public static final String UPDATER_BACK_SERVICE 				= "background_service";
 	public static final String UPDATER_BACK_FREQ 					= "background_frequency";
 	public static final String UPDATER_ENABLE_ORS 					= "updater_twrp_ors";
-	public static final String MOVE_TO_EXT_SD 						= "move_to_ext_sd";
+	public static final String MOVE_TO_EXT_SD 					= "move_to_ext_sd";
 	public static final String NOTIFICATIONS_SOUND 					= "notifications_sound";
 	public static final String NOTIFICATIONS_VIBRATE 				= "notifications_vibrate";
 	public static final String IGNORE_RELEASE_VERSION 				= "ignored_release";
@@ -62,6 +62,9 @@ public interface Constants {
 	public static final String OLD_CHANGELOG 					= "old_changelog";
 	public static final String FIRST_RUN 						= "first_run";
 	public static final String ABOUT_ACTIVITY_PREF					= "about_activity_pref";
+	public static final String IS_PRO				 		= "is_pro";
+	public static final String ABOUT_PREF_PRO 					= "about_pro";
+	public static final String STORAGE_LOCATION 					= "updater_storage_location";
 
 	// Broadcast intents
 	public static String MANIFEST_LOADED 						= "com.ota.update.MANIFEST_LOADED";

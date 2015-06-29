@@ -12,7 +12,8 @@
  	distributed under the License is distributed on an "AS IS" BASIS,
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
-	limitations under the License.
+	limitations under the License.
+
 -->
 <resources>
 
@@ -61,6 +62,11 @@
     <string name="ads_cat">Advertisements</string>
     <string name="ads_enable">Enable ads</string>
     <string name="ads_summary_on">Consider leaving advertisements enabled to support further development of the app</string>
-    <string name="ads_summary_off">Consider enabling advertisements enabled to support further development of the app</string>
+    <string name="ads_summary_off">Consider enabling advertisements enabled to support further development of the app</string> 
+    <string name="about_pro_title">OTA Updates Pro</string>
+    <string name="about_non_pro_summary">Consider showing your support by buying OTA Updates Pro</string>
+    <string name="about_pro_summary">Thanks for your support!</string>
+    <string name="storage">Storage</string>
+    <string name="storage_location">Storage location</string>
 
 </resources>
